@@ -1,6 +1,6 @@
 import "./App.css";
-import Formulario from "./components/formulario";
-import Header from "./components/header";
+import Formulario from "./components/Formulario";
+import Header from "./components/Header";
 import Titulos from "./components/Titulos";
 
 function App() {
