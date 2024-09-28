@@ -1,4 +1,3 @@
-import React from "react";
 import banner from "../assets/banner_fisei.png";
 
 export default function Header() {
