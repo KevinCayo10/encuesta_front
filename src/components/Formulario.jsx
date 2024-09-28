@@ -101,6 +101,8 @@ function Formulario() {
       toast.success("Datos enviados correctamente");
       // Reiniciar el formulario
       reset();
+      // Desplazamiento suave al inicio de la página
+      window.scrollTo({ top: 0, behavior: "smooth" });
     } catch (error) {
       console.error("Error:", error);
       toast.error("Hubo un error al enviar los datos");
@@ -207,11 +209,9 @@ function Formulario() {
         </h2>
         <div className="space-y-3">
           {[
-            "Menos de 15 minutos",
-            "Entre 15 y 30 minutos",
+            "Menos de 30 minutos",
             "Entre 30 minutos y 1 hora",
-            "Entre 1 hora y 3 horas",
-            "Más de 3 horas",
+            "Más de 1 hora",
           ].map((option) => (
             <div key={option} className="flex items-center space-x-3">
               <input
