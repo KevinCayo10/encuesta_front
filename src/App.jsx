@@ -1,3 +1,4 @@
+import { Toaster } from "react-hot-toast";
 import "./App.css";
 import Formulario from "./components/Formulario";
 import Header from "./components/Header";
@@ -6,6 +7,7 @@ import Titulos from "./components/Titulos";
 function App() {
   return (
     <>
+      <Toaster />
       <section>
         <Header />
       </section>

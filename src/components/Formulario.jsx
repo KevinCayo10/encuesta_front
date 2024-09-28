@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import { useForm, useWatch } from "react-hook-form";
+import toast from "react-hot-toast";
 
 function Formulario() {
   const {
     register,
     handleSubmit,
     watch,
+    reset,
     setValue,
     getValues,
     formState: { errors },
@@ -78,7 +80,6 @@ function Formulario() {
       otrasSubcategorias: otherSubcategories,
     };
 
-    console.log("Datos a enviar:", dataToSend); // Revisa los datos que se envían
     try {
       const response = await fetch(
         `${import.meta.env.VITE_REACT_APP_SERVICE_ID}/api/encuesta`,
@@ -96,11 +97,13 @@ function Formulario() {
       }
 
       const result = await response.json(); // Opcionalmente, manejar la respuesta de la API
-      console.log("Respuesta de la API:", result);
-      alert("Datos enviados correctamente");
+      // Mostrar el toast de éxito
+      toast.success("Datos enviados correctamente");
+      // Reiniciar el formulario
+      reset();
     } catch (error) {
       console.error("Error:", error);
-      alert("Hubo un error al enviar los datos");
+      toast.error("Hubo un error al enviar los datos");
     }
   };
 
