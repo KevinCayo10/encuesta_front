@@ -525,6 +525,12 @@ function Formulario() {
               </div>
             ))}
           </div>
+          {/* Mostrar mensaje de error general si no se selecciona ninguna categoría */}
+          {errors.categoriasProductos && (
+            <span className="text-red-500">
+              {errors.categoriasProductos.message}
+            </span>
+          )}
         </div>
 
         {/* Pregunta  7 */}
