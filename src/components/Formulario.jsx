@@ -106,7 +106,7 @@ function Formulario() {
 
       // Mostrar el toast de éxito
       toast.success("Datos enviados correctamente", {
-        autoClose: 5000, // Duración en milisegundos (5000ms = 5 segundos)
+        autoClose: 10000, // Duración en milisegundos (5000ms = 5 segundos)
       }); // Reiniciar el formulario
       reset();
       // Desplazamiento suave al inicio de la página
