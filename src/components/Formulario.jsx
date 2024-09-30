@@ -159,7 +159,7 @@ function Formulario() {
     >
       {/* Pregunta 0 */}
       <div className="mb-6">
-        <h2 className="text-lg font-medium mb-4">Ingrese su edad</h2>
+        <h2 className="text-base font-medium mb-4">Ingrese su edad</h2>
         <input
           type="number" // Cambiamos el tipo a number para aceptar solo números
           {...register("edad", { required: true, min: 0 })} // Registra el campo con validaciones
@@ -174,7 +174,7 @@ function Formulario() {
 
       {/* Pregunta 1 */}
       <div className="mb-6">
-        <h2 className="text-lg font-medium mb-4">
+        <h2 className="text-base font-medium mb-4">
           1. ¿Con qué frecuencia Usted realiza compras de productos
           tecnológicos?
         </h2>
@@ -204,7 +204,7 @@ function Formulario() {
 
       {/* Pregunta 2 */}
       <div className="mb-6">
-        <h2 className="text-lg font-medium mb-4">
+        <h2 className="text-base font-medium mb-4">
           2. ¿Cuánto tiempo Usted le dedica semanalmente a buscar o comprar un
           producto tecnológico?
         </h2>
@@ -236,7 +236,7 @@ function Formulario() {
 
       {/* Pregunta 3 (Opciones Múltiples) */}
       <div className="mb-6">
-        <h2 className="text-lg font-medium mb-4">
+        <h2 className="text-base font-medium mb-4">
           3. ¿Cuáles son las características más importante que Usted considera
           antes de comprar algún producto tecnológico?
         </h2>
@@ -270,7 +270,7 @@ function Formulario() {
 
       {/* Pregunta 4 */}
       <div className="mb-6">
-        <h2 className="text-lg font-medium ">
+        <h2 className="text-base font-medium ">
           4. ¿Qué tan importante es para Usted conocer la disponibilidad del
           producto tecnológico antes de realizar la compra?
         </h2>
@@ -307,7 +307,7 @@ function Formulario() {
 
       {/* Pregunta 5 */}
       <div className="mb-6">
-        <h2 className="text-lg font-medium ">
+        <h2 className="text-base font-medium ">
           5. ¿Qué tan importante es para Usted visualizar el producto
           tecnológico antes de realizar la compra?
         </h2>
@@ -342,7 +342,7 @@ function Formulario() {
 
       {/* Pregunta 6 (Opciones Múltiples) */}
       <div className="mb-6">
-        <h2 className="text-lg font-medium mb-4">
+        <h2 className="text-base font-medium mb-4">
           6. ¿Cuáles son las categorías de productos tecnológicos que Usted
           considera más relevantes al recibir recomendaciones?
         </h2>
@@ -498,7 +498,7 @@ function Formulario() {
 
       {/* Pregunta  7 */}
       <div className="mb-6">
-        <h2 className="text-lg font-medium ">
+        <h2 className="text-base font-medium ">
           7. ¿Qué tan importante es para Usted comparar productos tecnológicos
           de diferentes tiendas para tomar una decisión de compra?
         </h2>
@@ -536,7 +536,7 @@ function Formulario() {
 
       {/* Pregunta  8 */}
       <div className="mb-6">
-        <h2 className="text-lg font-medium ">
+        <h2 className="text-base font-medium ">
           8. ¿Qué tan importante es para Usted filtrar los productos
           tecnológicos para tomar una decisión de compra?
         </h2>
@@ -574,7 +574,7 @@ function Formulario() {
 
       {/* Pregunta  9 */}
       <div className="mb-6">
-        <h2 className="text-lg font-medium mb-4">
+        <h2 className="text-base font-medium mb-4">
           9. ¿Qué tan probable es que Usted siga una recomendación al momento de
           comprar equipos tecnológicos?
         </h2>
@@ -607,7 +607,7 @@ function Formulario() {
 
       {/* Pregunta 10 */}
       <div className="mb-6">
-        <h2 className="text-lg font-medium mb-4">
+        <h2 className="text-base font-medium mb-4">
           10. ¿Qué tan útil es para Usted las recomendaciones de productos
           tecnológicos que se basan en características y detalles similares de
           otros productos que le interesan?
@@ -637,7 +637,7 @@ function Formulario() {
 
       {/* Pregunta 11 */}
       <div className="mb-6">
-        <h2 className="text-lg font-medium mb-4">
+        <h2 className="text-base font-medium mb-4">
           11. ¿Cómo cree que las recomendaciones personalizadas podrían ayudarle
           a Usted en su proceso de compra?
         </h2>
