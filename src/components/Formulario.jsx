@@ -74,6 +74,7 @@ function Formulario() {
     ], // Comillas recomendadas
   };
   const onSubmit = async (data) => {
+    console.log("DATA : ", data);
     const dataToSend = {
       ...data,
       subcategoria: selectedSubcategories,
@@ -236,8 +237,8 @@ function Formulario() {
       {/* Pregunta 3 (Opciones Múltiples) */}
       <div className="mb-6">
         <h2 className="text-xl font-semibold mb-4">
-          3. ¿Cuál o cuáles son las características más importante que Usted
-          considera antes de comprar algún producto tecnológico?
+          3. ¿Cuáles son las características más importante que Usted considera
+          antes de comprar algún producto tecnológico?
         </h2>
         <div className="space-y-3">
           {[
@@ -342,8 +343,8 @@ function Formulario() {
       {/* Pregunta 6 (Opciones Múltiples) */}
       <div className="mb-6">
         <h2 className="text-xl font-semibold mb-4">
-          6. ¿Cuál o cuáles son las categorías de productos tecnológicos que
-          Usted considera más relevantes al recibir recomendaciones?
+          6. ¿Cuáles son las categorías de productos tecnológicos que Usted
+          considera más relevantes al recibir recomendaciones?
         </h2>
         <div className="space-y-3">
           {[
@@ -359,7 +360,11 @@ function Formulario() {
                   type="checkbox"
                   value={option}
                   id={option}
-                  {...register("categoriasProductos")}
+                  {...register("categoriasProductos", {
+                    validate: (value) =>
+                      selectedCategories.length > 0 ||
+                      "Debe seleccionar al menos una categoría",
+                  })}
                   onChange={handleCategoryChange}
                   className="h-4 w-4 text-indigo-600 border-gray-300 focus:ring-indigo-500"
                 />
@@ -372,7 +377,8 @@ function Formulario() {
               {selectedCategories.includes(option) && (
                 <div className="ml-6">
                   <h3 className="text-md font-semibold mb-2">
-                    Selecciona una subcategoría de {option}:
+                    ¿Cuál es la subcategoria de {option} que considera más
+                    relevante al recibir recomendaciones?
                   </h3>
                   <div className="space-y-3">
                     {categoriasSubcategorias[option].map((subcategory) => (
@@ -381,14 +387,16 @@ function Formulario() {
                         className="flex items-center space-x-3"
                       >
                         <input
-                          type="radio" // O usa "checkbox" si quieres permitir múltiples selecciones
-                          {...register(`subcategoria.${option}`)} // Asegúrate que esta clave sea correcta
+                          type="radio"
+                          {...register(`subcategoria.${option}`, {
+                            required: `Debe seleccionar una subcategoría`,
+                          })}
                           value={subcategory}
                           id={`${option}-${subcategory}`}
-                          name={`${option}-subcategoria`} // Asegúrate de que el nombre sea único por categoría
+                          name={`${option}-subcategoria`}
                           onChange={() =>
                             handleSubcategoryChange(option, subcategory)
-                          } // Llama a la función aquí
+                          }
                           className="h-4 w-4 text-indigo-600 border-gray-300 focus:ring-indigo-500"
                         />
                         <label
@@ -403,34 +411,35 @@ function Formulario() {
                           selectedSubcategories[option]?.includes("Otras") && (
                             <input
                               type="text"
-                              {...register(`otrasSubcategorias.${option}`)}
+                              {...register(`otrasSubcategorias.${option}`, {
+                                required: "Debe especificar una subcategoría",
+                              })}
                               placeholder="Especificar subcategoría"
                               className="ml-4 p-2 border rounded-md"
-                              onChange={(e) =>
-                                setOtherSubcategories((prev) => ({
-                                  ...prev,
-                                  [option]: e.target.value,
-                                }))
-                              }
                             />
                           )}
                       </div>
                     ))}
                   </div>
 
+                  {/* Mostrar mensaje de error de subcategoría en rojo */}
+                  {errors?.subcategoria?.[option] && (
+                    <span className="text-red-500">
+                      {"Debe seleccionar una subcategoria"}
+                    </span>
+                  )}
+
                   {/* Marcas dinámicas */}
                   {(selectedSubcategories[option] ||
                     otherSubcategories[option]) && (
                     <div className="ml-6 mt-4">
                       <h3 className="text-md font-semibold mb-2">
-                        Selecciona una marca de{" "}
+                        ¿Cuál es la marca de{" "}
                         {selectedSubcategories[option] ||
                           otherSubcategories[option]}
-                        :
+                        que considera más relevante al recibir recomendaciones?
                       </h3>
                       <div className="space-y-3">
-                        {/* Define las marcas por categoría */}
-
                         {marcasPorCategoria[option].map((brand) => (
                           <div
                             key={brand}
@@ -441,7 +450,9 @@ function Formulario() {
                               value={brand}
                               id={`${option}-${brand}`}
                               name={`${option}-marca`}
-                              {...register(`marca.${option}`)}
+                              {...register(`marca.${option}`, {
+                                required: `Debe seleccionar una marca`,
+                              })}
                               className="h-4 w-4 text-indigo-600 border-gray-300 focus:ring-indigo-500"
                             />
                             <label
@@ -456,7 +467,9 @@ function Formulario() {
                               watch(`marca.${option}`) === "Otras" && (
                                 <input
                                   type="text"
-                                  {...register(`otrasMarcas.${option}`)}
+                                  {...register(`otrasMarcas.${option}`, {
+                                    required: "Debe especificar una marca",
+                                  })}
                                   placeholder="Especificar marca"
                                   className="ml-4 p-2 border rounded-md"
                                 />
@@ -465,6 +478,13 @@ function Formulario() {
                         ))}
                       </div>
                     </div>
+                  )}
+
+                  {/* Mostrar mensaje de error de marca en rojo */}
+                  {errors?.marca?.[option] && (
+                    <span className="text-red-500">
+                      {"Debe seleccionar una marca"}
+                    </span>
                   )}
                 </div>
               )}
@@ -557,11 +577,11 @@ function Formulario() {
         </h2>
         <div className="space-y-3">
           {[
-            "No es importante",
-            "Poco importante",
+            "No es probable",
+            "Poco probable",
             "Neutro",
-            "Importante",
-            "Muy importante",
+            "Probable",
+            "Muy probable",
           ].map((option, index) => (
             <div key={option} className="flex items-center space-x-3">
               <input
@@ -590,26 +610,22 @@ function Formulario() {
           otros productos que le interesan?
         </h2>
         <div className="space-y-3">
-          {[
-            "No es importante",
-            "Poco importante",
-            "Neutro",
-            "Importante",
-            "Muy importante",
-          ].map((option, index) => (
-            <div key={option} className="flex items-center space-x-3">
-              <input
-                type="radio"
-                value={option}
-                id={`util-${index}`}
-                {...register("util", { required: true })}
-                className="h-4 w-4 text-indigo-600 border-gray-300 focus:ring-indigo-500"
-              />
-              <label htmlFor={`util-${index}`} className="text-gray-700">
-                {option}
-              </label>
-            </div>
-          ))}
+          {["No es útil", "Poco útil", "Neutro", "Util", "Muy útil"].map(
+            (option, index) => (
+              <div key={option} className="flex items-center space-x-3">
+                <input
+                  type="radio"
+                  value={option}
+                  id={`util-${index}`}
+                  {...register("util", { required: true })}
+                  className="h-4 w-4 text-indigo-600 border-gray-300 focus:ring-indigo-500"
+                />
+                <label htmlFor={`util-${index}`} className="text-gray-700">
+                  {option}
+                </label>
+              </div>
+            )
+          )}
         </div>
         {errors.util && (
           <span className="text-red-600">Este campo es obligatorio.</span>
