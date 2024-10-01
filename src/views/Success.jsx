@@ -12,10 +12,7 @@ const SuccessPage = () => {
         className="w-1/3 mb-6"
       />
       <h1 className="text-3xl font-bold mb-4">¡Datos enviados exitosamente!</h1>
-      <p className="text-lg mb-8">
-        Gracias por enviar la información. Nos pondremos en contacto contigo
-        pronto.
-      </p>
+      <p className="text-lg mb-8">Gracias por enviar la información.</p>
       <Link to="/" className="text-indigo-600 underline">
         Volver al inicio
       </Link>
