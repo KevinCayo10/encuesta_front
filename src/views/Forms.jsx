@@ -2,7 +2,7 @@ import React from "react";
 import { Toaster } from "react-hot-toast";
 import Header from "../components/Header";
 import Titulos from "../components/Titulos";
-import Formulario from "../components/formulario";
+import Formulario from "../components/Formulario";
 
 export default function Forms() {
   return (
