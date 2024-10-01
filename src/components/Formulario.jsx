@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useForm, useWatch } from "react-hook-form";
 import toast from "react-hot-toast";
-import { Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function Formulario() {
   const {
@@ -16,6 +16,7 @@ function Formulario() {
   const [selectedCategories, setSelectedCategories] = useState([]);
   const [selectedSubcategories, setSelectedSubcategories] = useState({});
   const [otherSubcategories, setOtherSubcategories] = useState({});
+  const navigate = useNavigate(); // useNavigate debe estar en el cuerpo del componente
 
   const categoriasSubcategorias = {
     "Dispositivos moviles": ["Celulares", "Tablets", "Smartwatches", "Otras"],
@@ -110,9 +111,8 @@ function Formulario() {
         autoClose: 10000, // Duración en milisegundos (5000ms = 5 segundos)
       }); // Reiniciar el formulario
       reset();
-      // Desplazamiento suave al inicio de la página
-      window.scrollTo({ top: 0, behavior: "smooth" });
-      Navigate("/success"); // Aquí redirigimos a la nueva vista
+
+      navigate("/success"); // Aquí redirigimos a la nueva vista
     } catch (error) {
       console.error("Error:", error);
       toast.error("Hubo un error al enviar los datos");

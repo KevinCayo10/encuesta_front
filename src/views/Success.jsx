@@ -1,12 +1,13 @@
 // SuccessPage.jsx
 import React from "react";
 import { Link } from "react-router-dom";
+import success from "../assets/submit-successfully.png";
 
 const SuccessPage = () => {
   return (
-    <div className="flex flex-col items-center justify-center h-screen">
+    <div className="flex flex-col items-center justify-center h-screen mx-4 text-center">
       <img
-        src="/path/to/success-image.png" // Cambia esto por la ruta de tu imagen
+        src={success} // Cambia esto por la ruta de tu imagen
         alt="Envío exitoso"
         className="w-1/3 mb-6"
       />
