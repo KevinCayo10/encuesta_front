@@ -1,23 +1,16 @@
-import { Toaster } from "react-hot-toast";
-import "./App.css";
-import Formulario from "./components/Formulario";
-import Header from "./components/Header";
-import Titulos from "./components/Titulos";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Forms from "./views/Forms";
+import SuccessPage from "./views/Success";
 
 function App() {
   return (
-    <>
-      <Toaster />
-      <section>
-        <Header />
-      </section>
-      <section>
-        <Titulos />
-      </section>
-      <section className="">
-        <Formulario />
-      </section>
-    </>
+    <Router>
+      <Routes>
+        {/* Otras rutas */}
+        <Route path="/" element={<Forms />} />
+        <Route path="/success" element={<SuccessPage />} />
+      </Routes>
+    </Router>
   );
 }
 

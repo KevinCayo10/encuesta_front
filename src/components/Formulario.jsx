@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useForm, useWatch } from "react-hook-form";
 import toast from "react-hot-toast";
+import { Navigate } from "react-router-dom";
 
 function Formulario() {
   const {
@@ -111,6 +112,7 @@ function Formulario() {
       reset();
       // Desplazamiento suave al inicio de la página
       window.scrollTo({ top: 0, behavior: "smooth" });
+      Navigate("/success"); // Aquí redirigimos a la nueva vista
     } catch (error) {
       console.error("Error:", error);
       toast.error("Hubo un error al enviar los datos");
