@@ -90,6 +90,10 @@ function Formulario() {
     setIsLoading(true);
 
     try {
+      console.log(
+        "SERVICE : ",
+        `${import.meta.env.VITE_REACT_APP_SERVICE_ID}/api/encuesta`
+      );
       const response = await fetch(
         `${import.meta.env.VITE_REACT_APP_SERVICE_ID}/api/encuesta`,
         {
@@ -196,31 +200,32 @@ function Formulario() {
           )}
         </div>
 
-        {/* Pregunta Estrato */}
         <div className="mb-6">
-          <h2 className="text-base font-medium mb-4">
-            Seleccione el tipo de estrato que se considera:
-          </h2>
+          <label className="text-base font-medium mb-4 block">
+            ¿Cuál es su ocupación actual?
+          </label>
           <div className="space-y-3">
-            <select
-              {...register("estrato", {
-                required: "Este campo es obligatorio",
-              })}
-              className="w-full border border-gray-300 rounded-md shadow-sm p-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
-            >
-              <option value="">Seleccione una opción</option>
-              <option value="Estudiante de pregrado">
-                Estudiante de pregrado
-              </option>
-              <option value="Ingeniero & Licenciado">
-                Ingeniero & Licenciado
-              </option>
-              <option value="Vendedor/Comerciante">Vendedor/Comerciante</option>
-            </select>
+            {[
+              "Estudiante de pregrado",
+              "Ingeniero & Licenciado",
+              "Vendedor de tienda",
+            ].map((option) => (
+              <div key={option} className="flex items-center space-x-3">
+                <input
+                  type="radio"
+                  value={option}
+                  id={option}
+                  {...register("ocupacion", { required: true })}
+                  className="h-4 w-4 text-indigo-600 border-gray-300 focus:ring-indigo-500"
+                />
+                <label htmlFor={option} className="text-gray-700">
+                  {option}
+                </label>
+              </div>
+            ))}
           </div>
-          {/* Mostrar error si no se selecciona un estrato */}
-          {errors.estrato && (
-            <span className="text-red-600">{errors.estrato.message}</span>
+          {errors.ocupacion && (
+            <span className="text-red-600">Este campo es obligatorio.</span>
           )}
         </div>
 

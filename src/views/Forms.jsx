@@ -6,7 +6,7 @@ import Formulario from "../components/Formulario";
 
 export default function Forms() {
   return (
-    <div className="mx-4">
+    <div className="sm:w-3/4   w-[90%] mx-auto  ">
       <Toaster />
       <section>
         <Header />
