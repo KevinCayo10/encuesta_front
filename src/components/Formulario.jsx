@@ -83,6 +83,7 @@ function Formulario() {
       ...data,
       subcategoria: selectedSubcategories,
       otrasSubcategorias: otherSubcategories,
+      estrato: "Estudiante Pregrado",
     };
 
     // Iniciar la carga
@@ -192,6 +193,34 @@ function Formulario() {
           {/* Mostrar error si no se ingresa la edad */}
           {errors.edad && (
             <span className="text-red-600">Este campo es obligatorio.</span>
+          )}
+        </div>
+
+        {/* Pregunta Estrato */}
+        <div className="mb-6">
+          <h2 className="text-base font-medium mb-4">
+            Seleccione el tipo de estrato que se considera:
+          </h2>
+          <div className="space-y-3">
+            <select
+              {...register("estrato", {
+                required: "Este campo es obligatorio",
+              })}
+              className="w-full border border-gray-300 rounded-md shadow-sm p-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+            >
+              <option value="">Seleccione una opción</option>
+              <option value="Estudiante de pregrado">
+                Estudiante de pregrado
+              </option>
+              <option value="Ingeniero & Licenciado">
+                Ingeniero & Licenciado
+              </option>
+              <option value="Vendedor/Comerciante">Vendedor/Comerciante</option>
+            </select>
+          </div>
+          {/* Mostrar error si no se selecciona un estrato */}
+          {errors.estrato && (
+            <span className="text-red-600">{errors.estrato.message}</span>
           )}
         </div>
 
