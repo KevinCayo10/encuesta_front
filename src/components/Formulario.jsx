@@ -83,7 +83,6 @@ function Formulario() {
       ...data,
       subcategoria: selectedSubcategories,
       otrasSubcategorias: otherSubcategories,
-      estrato: "Estudiante Pregrado",
     };
 
     // Iniciar la carga
