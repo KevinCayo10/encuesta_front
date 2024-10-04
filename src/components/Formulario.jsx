@@ -215,7 +215,7 @@ function Formulario() {
                   type="radio"
                   value={option}
                   id={option}
-                  {...register("ocupacion", { required: true })}
+                  {...register("estrato", { required: true })}
                   className="h-4 w-4 text-indigo-600 border-gray-300 focus:ring-indigo-500"
                 />
                 <label htmlFor={option} className="text-gray-700">
