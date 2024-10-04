@@ -82,8 +82,9 @@ function Formulario() {
     const dataToSend = {
       ...data,
       subcategoria: selectedSubcategories,
-      otrasSubcategorias: otherSubcategories,
+      otrasSubcategorias: data.otrasSubcategorias,
     };
+    console.log("otras subcategorias : ", dataToSend);
 
     // Iniciar la carga
     setIsLoading(true);
