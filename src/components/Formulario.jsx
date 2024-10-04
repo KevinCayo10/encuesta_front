@@ -89,10 +89,6 @@ function Formulario() {
     setIsLoading(true);
 
     try {
-      console.log(
-        "SERVICE : ",
-        `${import.meta.env.VITE_REACT_APP_SERVICE_ID}/api/encuesta`
-      );
       const response = await fetch(
         `${import.meta.env.VITE_REACT_APP_SERVICE_ID}/api/encuesta`,
         {
@@ -119,7 +115,7 @@ function Formulario() {
       navigate("/success"); // Aquí redirigimos a la nueva vista
     } catch (error) {
       console.error("Error:", error);
-      toast.error("Hubo un error al enviar los datos");
+      toast.error("Error: Reenviar la encuesta otra vez");
     } finally {
       // Detener la carga
       setIsLoading(false);
