@@ -116,7 +116,9 @@ function Formulario() {
       navigate("/success"); // Aquí redirigimos a la nueva vista
     } catch (error) {
       console.error("Error:", error);
-      toast.error("Error: Reenviar la encuesta otra vez");
+      toast.error("Error: Reenviar la encuesta otra vez", {
+        autoClose: 10000, // Duración en milisegundos (5000ms)
+      });
     } finally {
       // Detener la carga
       setIsLoading(false);
