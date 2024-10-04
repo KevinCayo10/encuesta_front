@@ -207,7 +207,8 @@ function Formulario() {
             {[
               "Estudiante de pregrado",
               "Ingeniero & Licenciado",
-              "Vendedor de tienda",
+              "Vendedor/Comerciante",
+              "Ninguna",
             ].map((option) => (
               <div key={option} className="flex items-center space-x-3">
                 <input
