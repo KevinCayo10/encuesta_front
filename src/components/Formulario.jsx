@@ -77,14 +77,28 @@ function Formulario() {
   };
   const [isLoading, setIsLoading] = useState(false);
 
+  const cleanObject = (obj) => {
+    return Object.fromEntries(
+      Object.entries(obj).map(([key, value]) => [
+        key,
+        value === null || value === undefined ? "" : value,
+      ])
+    );
+  };
+
   const onSubmit = async (data) => {
-    console.log("DATA : ", data);
+    // console.log("DATA : ", data);
+
     const dataToSend = {
       ...data,
       subcategoria: selectedSubcategories,
       otrasSubcategorias: data.otrasSubcategorias,
     };
-    console.log("otras subcategorias : ", dataToSend);
+
+    // Limpiar dataToSend antes de enviarlo
+    const cleanedDataToSend = cleanObject(dataToSend);
+
+    // console.log("Data new : ", cleanedDataToSend);
 
     // Iniciar la carga
     setIsLoading(true);
@@ -97,7 +111,7 @@ function Formulario() {
           headers: {
             "Content-Type": "application/json", // Indicar que el formato es JSON
           },
-          body: JSON.stringify(dataToSend), // Convertir los datos a JSON
+          body: JSON.stringify(cleanedDataToSend), // Convertir los datos limpios a JSON
         }
       );
 
@@ -207,7 +221,7 @@ function Formulario() {
               "Estudiante de pregrado",
               "Ingeniero/a & Licenciado/a & Tecnólogo/a",
               "Vendedor/a & Comerciante",
-              "Ninguna",
+              "Otra",
             ].map((option) => (
               <div key={option} className="flex items-center space-x-3">
                 <input
