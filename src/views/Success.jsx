@@ -16,6 +16,14 @@ const SuccessPage = () => {
       <Link to="/" className="text-indigo-600 underline">
         Volver al inicio
       </Link>
+
+      <footer className="text-gray-80 py-4">
+        <div className="container mx-auto text-center">
+          <p className="text-sm">
+            &copy; 2024 Kevin Cayo. All rights reserved.
+          </p>
+        </div>
+      </footer>
     </div>
   );
 };
